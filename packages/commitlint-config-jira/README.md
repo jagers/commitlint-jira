@@ -2,8 +2,12 @@
   <img height="200"
     src="https://raw.githubusercontent.com/Gherciu/commitlint-jira/master/logo.png">
   <h1>commitlint-config-jira</h1>
-  <p>A <b>recomended</b> config who contain preconfigured rules for jira commits messages style. Part of <a href="https://github.com/Gherciu/commitlint-jira">commitlint-jira</a> monorepo.</p>
+  <p>commitlint-config-jira checks if your commit messages meet the Jira conventional commit format.</p>
 </div>
+
+> The author of this package is looking for a job opportunity to make some 💴 for a living.
+> If you have any offers reach me out on [LinkedIn](https://www.linkedin.com/in/gherciu/) or [Mail](mailto:gherciu553@gmail.com).
+> Thanks in advance!
 
 [![GitHub](https://img.shields.io/github/license/Gherciu/commitlint-jira)](https://github.com/Gherciu/commitlint-jira/blob/master/LICENSE)
 [![Multipack](https://img.shields.io/badge/Generated%20from-Gherciu%2Fmultipack-green)](https://github.com/Gherciu/multipack)
@@ -32,6 +36,14 @@ module.exports = {
 ```
 
 ##### To lint commits before they are created you can use Husky's 'commit-msg' hook
+
+Run the following in your terminal to create the proper hook.
+
+```bash
+npx husky add .husky/commit-msg 'commitlint --edit $1'
+```
+
+For version 4 and under of Husky use the following syntax instead in your `package.json`.
 
 ```json
 // package.json
