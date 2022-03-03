@@ -19,7 +19,7 @@ const jiraTaskIdMinLengthRuleResolver: TRuleResolver = (
 
   return [
     isRuleValid,
-    `${nonValidTaskId} taskId must not be shorten than ${value} characters`,
+    `${nonValidTaskId} taskId must not be shorter than ${value} characters`,
   ]
 }
 

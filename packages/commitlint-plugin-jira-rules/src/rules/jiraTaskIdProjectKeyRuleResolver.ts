@@ -18,7 +18,7 @@ const jiraTaskIdProjectKeyRuleResolver: TRuleResolver = (
     return [true]
   }
   if (typeof value !== 'string' && !Array.isArray(value) && value) {
-    return [false, 'jira project key should be a string or an array of strings']
+    return [false, 'invalid rule option - jira project key should be a string or an array of strings']
   }
 
   commitMessage.commitTaskIds.forEach(taskId => {
