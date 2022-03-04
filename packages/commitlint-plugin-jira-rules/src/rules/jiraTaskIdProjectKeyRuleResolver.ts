@@ -22,20 +22,26 @@ const jiraTaskIdProjectKeyRuleResolver: TRuleResolver = (
   }
 
   commitMessage.commitTaskIds.forEach(taskId => {
-    if (typeof value === 'string' && new RegExp(`^${value}`).test(taskId)) {
-      nonValidTaskId = taskId
+    let matchFound = false
+    if (typeof value === 'string') {
+      matchFound = matchFound || new RegExp(`^${value}`).test(taskId)
     }
 
     if (Array.isArray(value)) {
       value.forEach(projectKey => {
-        if (new RegExp(`^${projectKey}`).test(taskId)) {
-          nonValidTaskId = taskId
-        }
+        matchFound = matchFound || new RegExp(`^${projectKey}`).test(taskId)
       })
+      if (!matchFound) {
+        nonValidTaskId = taskId
+      }
+    }
+
+    if (!matchFound) {
+      nonValidTaskId = taskId
     }
   })
 
-  isRuleValid = !!nonValidTaskId
+  isRuleValid = nonValidTaskId === null
 
   return [
     isRuleValid,
